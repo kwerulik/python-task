@@ -21,3 +21,4 @@ if __name__ == "__main__":
     stats = analyzer.calculate_statistics()
     analyzer.print_statistics(stats)
     analyzer.save_statistics_to_csv(stats)
+    analyzer.plot_statistics(stats)

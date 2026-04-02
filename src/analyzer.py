@@ -4,7 +4,7 @@ from typing import List
 from collections import Counter
 from pydantic import ValidationError
 from src.models import User
-
+import matplotlib.pyplot as plt
 
 class UserAnalyzer:
     def __init__(self, file_path: str):
@@ -94,3 +94,27 @@ class UserAnalyzer:
 
         except Exception as e:
             print(f"Failed to save statistics to CSV: {e}")
+
+    def plot_statistics(self, stats: dict, output_file: str = "statistics_chart.png"):
+        """Generates and saves a bar chart of users per city."""
+        if not stats or not stats.get('city_counts'):
+                print("No data available to plot.")
+                return
+        try:
+            cities = list(stats['city_counts'].keys())
+            counts = list(stats['city_counts'].values())
+
+            plt.figure(figsize=(8, 5))
+            plt.bar(cities, counts, color='#4CAF50')
+
+            plt.title('Number of Users per City', fontsize=14)
+            plt.xlabel('City', fontsize=12)
+            plt.ylabel('Number of Users', fontsize=12)
+
+            plt.yticks(range(0, max(counts) + 2))
+            plt.tight_layout() 
+            plt.savefig(output_file)
+            print(f"Chart successfully saved to {output_file}")
+
+        except Exception as e:
+            print(f"Failed to generate chart: {e}")
