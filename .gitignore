@@ -208,3 +208,5 @@ __marimo__/
 
 .pytest_cache/
 .DS_Store
+
+statistics.csv

@@ -1,6 +1,7 @@
 import pytest
 from pydantic import ValidationError
-from src.main import User, UserAnalyzer
+from src.models import User
+from src.analyzer import UserAnalyzer
 
 
 def test_user_valid_data():
