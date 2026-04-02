@@ -118,3 +118,20 @@ class UserAnalyzer:
 
         except Exception as e:
             print(f"Failed to generate chart: {e}")
+
+
+    def filter_users_by_age(self, min_age: int = None, max_age: int = None) -> None:
+        """Filters the loaded users list based on provided age boundaries."""
+        original_count = len(self.users)
+
+        if min_age is not None:
+            self.users = [user for user in self.users if user.age >= min_age]
+
+        if max_age is not None:
+            self.users = [user for user in self.users if user.age <= max_age]
+
+        filtered_count = len(self.users)
+
+        if original_count != filtered_count:
+            print(
+                f"Applied age filters. Users remaining: {filtered_count} out of {original_count}.")
