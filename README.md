@@ -24,6 +24,27 @@ Run with age filtering (e.g., users between 20 and 40 years old):
 Run with your own custom JSON file:
 `python -m src.main -f path/to/your/file.json`
 
+## Project structure
+
+```
+python-task/
+│
+├── src/
+│   ├── __init__.py
+│   ├── main.py      
+│   ├── analyzer.py    
+│   └── models.py      
+│
+├── tests/
+│   └── test_main.py  
+│
+├── data/
+│   └── Users.json 
+│
+├── requirements.txt
+└── README.md
+```
+
 ## Features
 * **Validation:** Uses Pydantic to drop bad records (e.g., negative age) and fix formatting (capitalizes city names).
 * **Advanced Filtering:** Ability to filter users by age range via CLI arguments.
