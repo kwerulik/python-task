@@ -1,12 +1,13 @@
+import argparse
 import json
 from typing import Optional, List
 from collections import Counter
-from pydantic import BaseModel, ValidationError, field_validator
+from pydantic import BaseModel, ValidationError, field_validator, Field
 
 
 class User(BaseModel):
-    name: str
-    age: int
+    name: str = Field(..., min_length=1)
+    age: int = Field(..., ge=0, le=150)
     city: Optional[str] = None
 
     @field_validator('city')
@@ -82,7 +83,17 @@ class UserAnalyzer:
 
 
 if __name__ == "__main__":
-    analyzer = UserAnalyzer("data/Users.json")
+    parser = argparse.ArgumentParser(description="Analyze user data from a JSON file.")
+
+    parser.add_argument(
+        '-f', '--file',
+        type=str,
+        default='data/Users.json', 
+        help='Path to the JSON file containing user data'
+    )
+
+    args = parser.parse_args()
+    analyzer = UserAnalyzer(args.file)
     analyzer.load_data()
     analyzer.display_loading_summary()
     stats = analyzer.calculate_statistics()
