@@ -1,0 +1,11 @@
+[
+  { "name": "Anna", "age": 25, "city": "Warsaw" },
+  { "name": "Jan", "age": 30, "city": "Krakow" },
+  { "name": "Maria", "age": 22, "city": "Warsaw" },
+  { "name": "Tomasz", "age": 35, "city": "Gdansk" },
+
+  { "name": "Piotr", "city": "Wroclaw" },
+  { "name": "Kasia", "age": "dwadzieścia", "city": "Poznan" },
+  { "name": "Marek", "age": -5, "city": "Lodz" },
+  { "name": "", "age": 40, "city": null }
+]
